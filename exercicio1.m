@@ -16,7 +16,7 @@ imax = 20;
     % Iteracoes subsequentes utilizando o Metodo de Newton-Raphson.
     for ii = 1: length (t_raizes)-1
         % Calculo da proxima aproximacao do valor do tempo [t(ii+1)].
-        t_raizes(ii+1) = t_raizesii) - func(t_raizes(ii)) / func_d(t_raizes(ii));
+        t_raizes(ii+1) = t_raizesii) - func(t_raizes(ii)) / func_d(t_raizes(ii))
 
         % Determinacao e armazenamneto do erro na iteracao (em porcentagem).
         if t_raizes(ii+1) ~= 0
