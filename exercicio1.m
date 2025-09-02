@@ -26,12 +26,12 @@ imax = 20;
         % Verificacao do erro para possivelmente terminar o processo antecipadamente.
         if erro(ii) < es
             t_raizes = t_raizes(ii+1); % Obtem o valor otimo de v.
-            return;
+            break;
         end
     end
 
     % Caso o loop nao atinja um erro menor que 1% durante as 20 iteracoes, usa-se o valor maximo obtido.
-    t = t_raizes(end);
+    t = t_raizes(ii);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
