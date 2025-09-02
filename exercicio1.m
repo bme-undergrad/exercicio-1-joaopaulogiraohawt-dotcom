@@ -1,4 +1,4 @@
-function t = exercicio1(func,x0)
+function t = exercicio1(func, func_d, x0)
 
 % nao alterar: inicio
 es = 1;
@@ -7,32 +7,31 @@ imax = 20;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
- % Declaracao dos vetores que contem os valores do tempo (t) e erro aproximado (erro).
-    t = zeros(imax, 1);
+  v = zeros(imax, 1);
     erro = zeros(imax, 1);
 
     % Definicao da iteracao inicial generica.
-    t(1) = x0;
+    v(1) = x0;
 
     % Iteracoes subsequentes utilizando o Metodo de Newton-Raphson.
     for ii = 1:imax-1
-        % Calculo da próxima aproximacao do valor do tempo [t(ii+1)].
-        t(ii+1) = t(ii) - func(t(ii)) / func_d(t(ii));
+        % Calculo da proxima aproximacao do valor do tempo [t(ii+1)].
+        v(ii+1) = v(ii) - func(v(ii)) / func_d(v(ii));
 
-        % Determinacao e armazenamneto do erro na iteração (em porcentagem).
-        if t(ii+1) ~= 0
-            erro(ii) = abs((t(ii+1) - t(ii)) / t(ii+1)) * 100;
+        % Determinacao e armazenamneto do erro na iteracao (em porcentagem).
+        if v(ii+1) ~= 0
+            erro(ii) = abs((v(ii+1) - v(ii)) / v(ii+1)) * 100;
         end
 
         % Verificacao do erro para possivelmente terminar o processo antecipadamente.
         if erro(ii) < es
-            t = t(ii+1); % Obtém o valor ótimo de t.
+            v = v(ii+1); % Obtém o valor ótimo de v.
             return;
         end
     end
 
-    % Caso o loop nao atinja um erro menor que 1% durante as 20 iteracoes, usa-se o valor máaimo obtido.
-    t = t(imax);
+    % Caso o loop nao atinja um erro menor que 1% durante as 20 iteracoes, usa-se o valor maximo obtido.
+    v = v(imax);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
